@@ -1,17 +1,19 @@
-const formpage = require("../pageobjects/form.page")
+const form = require("../pageobjects/form.page")
+const testdata =require("../resource/inputdata.json")
 
-describe('Validating title page', () => {
+describe('Title page', () => {
     it('validate the title', async () => {
-        await formpage.openBrowser();
-        expect(await formpage.homepage_Logo).toBeDisplayed();
+        await form.openBrowser();
+        expect(await form.homepage_Logo).toBeDisplayed();
     });
 
     it('Navigating to formpage', async () => {
-        await formpage.openForm();
+        await form.openForm();
     });
 
     it('Entering details', async () => {
-        await formpage.formData('Bhavana', 'vuttur', 'bhavana23@gmail.com', 'Argentina (+54)', '9876543212', 'NZB', 'jkpt', 'TS', '506000', "22/03/1990")
+        const data=testdata.formDetails
+        await form.formData( data.fname, data.lname, data.Email, data.country, data.addressLine1,data.addressLine2,data.state, data.postalCode, data.dob,data.gender)
 
     });
 });

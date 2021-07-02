@@ -9,7 +9,7 @@ class formpage extends Page {
     get firstname() { return $("//input[@id='firstname']") };
     get lasttname() { return $("//input[@id='lasttname']") };
     get Email() { return $("//input[@id='email']") };
-    get country_dropdown() { return $("//label[text( )='Country code']/..//select") };
+    get country() { return $("//label[text( )='Country code']/..//select") };
     get phoneNumber() { return $("//input[@placeholder='Phone Number']") };
     get addressLine1() { return $("//input[@placeholder='Address Line-1']") };
     get addressLine2() { return $("//input[@placeholder='Address Line-2']") };
@@ -30,11 +30,11 @@ class formpage extends Page {
         (await this.form_Btn).click();
     }
 
-    async formData(firstname, lasttname, Email, country, phoneNumber, addressLine1, addressLine2, state, postalCode, dob) {
+    async formData(firstname,lasttname, Email, country, phoneNumber, addressLine1, addressLine2, state, postalCode, dob) {
         await (await this.firstname).setValue(firstname);
         await (await this.lasttname).setValue(lasttname);
         await (await this.Email).setValue(Email);
-        await (await this.country_dropdown).selectByVisibleText(country)
+        await (await this.country).selectByVisibleText(country)
         await (await this.phoneNumber).setValue(phoneNumber);
         await (await this.addressLine1).setValue(addressLine1);
         await (await this.addressLine2).setValue(addressLine2);
